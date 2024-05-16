@@ -1,1 +1,4 @@
-export class CreateGenerationDto {}
+export class CreateGenerationDto {
+  model: string;
+  word: string;
+}
