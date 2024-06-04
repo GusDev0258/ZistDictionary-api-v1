@@ -12,18 +12,16 @@ export class GenerationsService {
     return response;
   }
 
-  async translateWord(
-    word: string,
-    incomeLanguage: string,
-    outcomeLanguage: string,
-  ) {
+  async translateWord(word: string, fromLanguage: string, toLanguage: string) {
     const ollama = OllamaEntity.getInstance();
-    const response = await ollama.translateWord(
-      word,
-      incomeLanguage,
-      outcomeLanguage,
-    );
-    return response.message.content;
+    const response = await ollama.translateWord(word, fromLanguage, toLanguage);
+    try {
+      const translation = JSON.parse(response.message.content);
+      console.log(translation);
+      return translation;
+    } catch (error) {
+      throw new Error('Invalid JSON response');
+    }
   }
   findAll() {
     return `This action returns all generations`;

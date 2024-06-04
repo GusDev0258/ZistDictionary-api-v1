@@ -1,5 +1,5 @@
 export class TranslateWordDto {
   word: string;
-  incomeLanguage: string;
-  outcomeLanguage: string;
+  fromLanguage: string;
+  toLanguage: string;
 }
